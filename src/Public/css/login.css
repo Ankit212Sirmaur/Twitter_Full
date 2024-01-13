@@ -1,8 +1,33 @@
 body{
-    background-color: rgb(59, 59, 239);
+    background-color: rgb(80, 119, 235);
 }
 .wrapper{
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+
+.loginContainer{
+    padding: 20px;
+    width: 85%;
+    max-width: 500px;
+    text-align: center;
+    background-color: #fff;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password']{
+    margin-bottom: 20px;
+    border-radius: 2px;
+    border: 1px solid #dedede;
+    background-color: #f2f2f2;
+}
+
+input[type='submit']{
+    background-color:  rgb(80, 119, 235);;
 }

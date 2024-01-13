@@ -1,14 +1,17 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const login = require('./routes/login');
+const loginRoute = require('./routes/login');
 const requireLogin = require('./middleware/requireLogin');
+const registerRoute = require('./routes/register');
 
 app.set("view engine", "pug");
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, "public")));
-app.use('/login', login);
 
+
+app.use('/login', loginRoute);
+app.use('/register', registerRoute)
 
 app.get("/", requireLogin, (req, res)=>{
 
