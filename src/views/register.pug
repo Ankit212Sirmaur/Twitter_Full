@@ -3,7 +3,7 @@ extends layouts/login-layout.pug
 block content
     .loginContainer
         h1 Sign Up
-        form#register-form(action = '/home',method='post', onSubmit="event.preventDefault(); validateForm(); ")
+        form#register-form( method='post', onSubmit="event.preventDefault(); validateForm(); ")
             p.errorMessage #{errorMessage}
             input(type="text", name="firstName", placeholder="first name", value = firstName, required='')
             input(type="text", name="lastName", placeholder="last name",value = lastName, required='')

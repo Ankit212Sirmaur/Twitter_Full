@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: '/images/profilePic.png',
     }
-})
+}, {timestamps: true})
 
 let User = mongoose.model('User', userSchema);
 module.exports = User
