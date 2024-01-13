@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const router = express.Router();
 const app = express();
 const User = require('../models/user');
@@ -35,6 +36,9 @@ router.post('/', async (req, res) => {
         if(user == null){
             let data = req.body;
             User.create(data)
+
+            //get first user 
+            // data.password = bcrypt.hash()
             .then(user =>{
                 console.log(user);
             })
