@@ -1,0 +1,22 @@
+nav{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 100%;
+}
+nav a{
+    display: block;
+    padding: 15px;
+    font-size: 30px;
+    width: 55px;
+    height: 65px;
+    align-items: center;
+    justify-content: center;
+    
+}
+.mainSectionContainer{
+    background-color: blue;
+}
+/* a:link{
+    color: rgb(205, 64, 64);
+} */
