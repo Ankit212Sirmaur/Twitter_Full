@@ -9,6 +9,7 @@ const connect = async () => {
     } catch (error) {
         console.error("Error connecting to MongoDB:", error.message);
     }
+    // d33h5c6yDCE9JSjs
 };
 
 module.exports = connect;

@@ -6,34 +6,37 @@ const requireLogin = require('./middleware/requireLogin');
 const registerRoute = require('./routes/register');
 const bodyParser = require('body-parser');
 const connect = require('./config/databaseConfig')
-const User = require('./models/user');
+const user = require('./models/user');
 const session = require('express-session');
+const logoutRoute = require('./routes/logout')
+const postApiRoute = require('./routes/api/posts');
 
 app.set("view engine", "pug");
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
-// console.log(req.session);
 
 app.use(session({
     secret: "my secreat gun",
     resave: false,
     saveUninitialized: false,
 }));
-// console.log(req.session);
 
 app.use('/login', loginRoute);
 app.use('/register', registerRoute)
+app.use('/logout', logoutRoute);
+
+app.use('/api/posts', postApiRoute);
 
 
 app.get("/", requireLogin, (req, res) => {
 
-    var palylod = {
+    var playload = {
         pageTitle: "home",
         userLoggedIn: req.session.user,
     }
-    res.status(200).render('home', palylod);
+    res.status(200).render('home', playload);
 })
 
 let PORT = 2211;

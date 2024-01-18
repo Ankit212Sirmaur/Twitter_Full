@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    var playlod = req.body;
+    var playload = req.body;
 
     if (req.body.logUsername && req.body.logPassword) {
         let user = await User.findOne({
@@ -23,8 +23,8 @@ router.post('/', async (req, res) => {
         })
             .catch(err => {
                 console.log(err);
-                playlod.errorMessage = "User not Found...Please create a new account";
-                res.status(200).render('login', playlod);
+                playload.errorMessage = "User not Found...Please create a new account";
+                res.status(200).render('login', playload);
             });
 
         if (user != null) {
@@ -35,10 +35,10 @@ router.post('/', async (req, res) => {
                 return res.redirect('/');
             }
         }
-        playlod.errorMessage = "login credentials incorrect";
-        return res.status(200).render('login', playlod);
+        playload.errorMessage = "login credentials incorrect";
+        return res.status(200).render('login', playload);
     }
-    playlod.errorMessage = "Please Make sure each input have valid value";
+    playload.errorMessage = "Please Make sure each input have valid value";
     res.status(200).render('login');
 })
 
