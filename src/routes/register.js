@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const session = require("express-session");
 const app = express();
-const User = require("../models/user");
+const User = require("../models/userSchema");
 
 app.set("view engine", "pug");
 app.set("views", "views");

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const app = express();
-const User = require("../models/user");
+const User = require("../models/userSchema");
 const bcrypt = require("bcrypt");
 
 app.set("view engine", "pug");

@@ -4,6 +4,8 @@
     --lightGrey: rgb(230, 236,240);
     --spacing: 15px;
     --blueLight: #9BD1F9;
+    --greyText: rgb(101,119,134);
+    --greyButtonText: rgb(0,0,0.34);
 }
 *{
     outline: none !important;
@@ -99,4 +101,56 @@ h1{
 }
 #submitPostButton:disabled{
     background-color: var(--blueLight);
+}
+.post{
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing);
+    cursor: pointer;
+    border-bottom: 1px solid var(--lightGrey);
+}
+.mainContentContainer{
+    flex: 1;
+    display: flex;
+}
+.postContentContainer{
+    padding-left: var(--spacing);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.username,
+.data{
+    color: var(--greyText)
+}
+.displayName{
+    font-weight: bold;
+}
+.postFooter{
+    display: flex;
+    align-items: center;    
+}
+.postFooter .postButtonContainer{
+    flex: 1;
+    display:flex ;
+}
+.postFooter .postButtonContainer button{
+    padding: 0.5px;
+}
+button{
+    background-color: transparent ;
+    border: none;
+    color: var(--greyButtonText);
+}
+.header a:hover{
+    text-decoration: underline;
+}
+.header a,
+.header span{
+    padding-right: 5px;
+}
+.postButtonContainer button:hover{
+    background-color: #d4edff;
+    color: var(--blue);
+    border-radius: 50%;
 }
