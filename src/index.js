@@ -35,6 +35,7 @@ app.get("/", requireLogin, (req, res) => {
     var playload = {
         pageTitle: "home",
         userLoggedIn: req.session.user,
+        userLoggedInJs: JSON.stringify(req.session.user),
     }
     res.status(200).render('home', playload);
 })

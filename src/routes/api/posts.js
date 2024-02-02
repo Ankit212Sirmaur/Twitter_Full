@@ -6,6 +6,7 @@ const User = require('../../models/userSchema');
 router.get('/', (req, res) => {
     tweet.find()
     .populate('postedBy')
+    .sort({'createdAt':-1})
     .then((results) =>{
         return res.status(200).send(results);
     })
@@ -13,6 +14,52 @@ router.get('/', (req, res) => {
         console.log(error);
         res.sendStatus(400);
     } )
+})
+
+router.put('/:id/like', async(req, res) =>{
+
+    let postId = req.params.id;
+    let userId = req.session.user._id;
+
+    let isLiked = req.session.user.likes && req.session.user.likes.includes(postId);
+
+    let option = isLiked ? '$pull' : '$addToSet';
+    // insert the user like
+    req.session.user = await User.findByIdAndUpdate(userId, {[option]: {likes: postId}}, {new: true})
+    .catch((error) =>{
+        console.log(error);
+        res.sendStatus(400);
+    })
+    // insert the post like
+    let post = await tweet.findByIdAndUpdate(postId, {[option] : {likes: userId}}, {new: true})
+    .catch((error) =>{
+        console.log(error);
+        res.sendStatus(400);
+    })
+    res.status(200).send(post);
+})
+router.post('/:id/retweet', async(req, res) =>{
+    res.status(200).send('send retweet');
+
+    let postId = req.params.id;
+    let userId = req.session.user._id;
+
+    let isLiked = req.session.user.likes && req.session.user.likes.includes(postId);
+
+    let option = isLiked ? '$pull' : '$addToSet';
+    // insert the user like
+    req.session.user = await User.findByIdAndUpdate(userId, {[option]: {likes: postId}}, {new: true})
+    .catch((error) =>{
+        console.log(error);
+        res.sendStatus(400);
+    })
+    // insert the post like
+    let post = await tweet.findByIdAndUpdate(postId, {[option] : {likes: userId}}, {new: true})
+    .catch((error) =>{
+        console.log(error);
+        res.sendStatus(400);
+    })
+    res.status(200).send(post);
 })
 
 router.post('/', async (req, res) => {

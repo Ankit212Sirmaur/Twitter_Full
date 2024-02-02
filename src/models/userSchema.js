@@ -30,7 +30,13 @@ const userSchema = new mongoose.Schema({
     profilePic: {
         type: String,
         default: '/images/profilePic.png',
-    }
+    },
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Tweet'
+        }
+    ],
 }, { timestamps: true })
 
 // mongoose hook
